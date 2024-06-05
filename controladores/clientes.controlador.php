@@ -201,66 +201,60 @@ class ControladorClientes{
 	static public function ctrCompraGratis(){
 		
 		
-		if(isset($_POST["clienteFree"])){
+	
+		if(isset($_POST["idClienteFree"])){
+			$tabla = "clientes";
+			$item1 = "gratis";
+			$valor1 = 0;
+			$valor = $_POST["idClienteFree"];
+			
+			$respuesta = ModeloClientes::mdlActualizarCliente($tabla, $item1, $valor1, $valor);
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["clienteFree"])
-			  ){
-
-			   	$tabla = "clientes";
-				$item1 = "gratis";
-				$valor1 = "0";
-				$valor = $_POST["clienteFree"];
-				print_r($valor);
-			   	$respuesta = ModeloClientes::mdlActualizarCliente($tabla, $item1, $valor1, $valor);
-
-			   	if($respuesta == "ok"){
-
-					echo'<script>
-
-					swal({
-						  type: "success",
-						  title: "El cliente ha sido cambiado correctamente",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-									if (result.value) {
-
-									window.location = "clientes";
-
-									}
-								})
-
-					</script>';
-
-				}
-
-			}else{
+			if($respuesta == "ok"){
 
 				echo'<script>
 
-					swal({
-						  type: "error",
-						  title: "¡El cliente no puede ir vacío o llevar caracteres especiales!",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
+				swal({
+					type: "success",
+					title: "El cliente ha redimido su compra gratis correctamente",
+					showConfirmButton: true,
+					confirmButtonText: "Cerrar"
+					}).then(function(result){
+								if (result.value) {
 
-							window.location = "clientes";
+								window.location = "clientes";
 
-							}
-						})
+								}
+							})
 
-			  	</script>';
+				</script>';
+
+			}else{
+
+			echo'<script>
+
+				swal({
+					type: "error",
+					title: "¡El cliente no puede redimir compra gratis!",
+					showConfirmButton: true,
+					confirmButtonText: "Cerrar"
+					}).then(function(result){
+						if (result.value) {
+
+						window.location = "clientes";
+
+						}
+					})
+
+			</script>';
 
 
-
-			}
 
 		}
+		}
 
-		
 	}
 
 }
+
 

@@ -102,8 +102,14 @@ if($_SESSION["perfil"] == "Especial"){
                     <td>'.$value["fecha_nacimiento"].'</td>             
 
                     <td>'.$value["compras"].'</td>
-
-                    <td><button class="btn-success btnGratis" data-toggle="modal" data-target="#modalCompraGratis" idCliente="'.$value["id"].'">'.$value["gratis"].'</button></td>
+                    
+                    <td><button 
+                    class="' . ($value["gratis"] > 0 ? 'btn-success' : 'btn-danger') . ' btnGratis" 
+                    data-toggle="modal" 
+                    data-target="#modalCompraGratis" 
+                    idCliente="' . $value['id'] . '">
+                    ' . $value["gratis"] . '
+                </button></td>
 
                     <td>'.$value["ultima_compra"].'</td>
 
@@ -502,7 +508,7 @@ MODAL COMPRA GRATIS
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
                 <input type="text" class="form-control input-lg" name="clienteFree" id="clienteFree" required>
-                <input type="hidden" id="clienteFree" name="clienteFree">
+                <input type="hidden" id="idClienteFree" name="idClienteFree">
               </div>
 
             </div>
@@ -576,6 +582,20 @@ MODAL COMPRA GRATIS
               </div>
 
             </div>
+
+            <!-- ENTRADA PARA ESTADO GRATIS -->
+
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-gif"></i></span> 
+
+                <input type="number" min="0" class="form-control input-lg" name="gratis" id="gratis">
+
+              </div>
+
+            </div>
   
           </div>
 
@@ -589,7 +609,7 @@ MODAL COMPRA GRATIS
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary redimirCompraGratis" Id="idClienteFree">Redimir Compra Gratis</button>
+          <button type="submit" class="btn btn-primary redimirCompraGratis" >Redimir Compra Gratis</button>
 
         </div>
 

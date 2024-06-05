@@ -86,6 +86,7 @@ $(".tablas").on("click", ".btnGratis", function(){
 	       $("#telefonoFree").val(respuesta["telefono"]);
 	       $("#direccionFree").val(respuesta["direccion"]);
           $("#fechaNacimientoFree").val(respuesta["fecha_nacimiento"]);
+          $("#gratis").val(respuesta["gratis"]);
 
 	  }
 
@@ -97,26 +98,5 @@ $(".tablas").on("click", ".btnGratis", function(){
 REDIMIR COMPRA GRATIS
 =============================================*/
 $(".redimirCompraGratis").click(function(){
-
-	var idCliente = $(this).val()
-
-
-  $.ajax({
-
-    url:"ajax/clientes.ajax.php",
-    method: "POST",
-    data: datos,
-    cache: false,
-    contentType: false,
-    processData: false,
-    dataType:"json",
-    success:function(respuesta){
-    
-      console.log(respuesta);
-
-  }
-
-  })
-
 
 })

@@ -101,7 +101,7 @@ class ControladorVentas{
 
 			if (($valor1a) % 2 == 0) {
 
-				$compraGratis = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1g, '1', $valor);
+				$compraGratis = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1g, 1, $valor);
 				
 			}
 
@@ -114,7 +114,6 @@ class ControladorVentas{
 			$valor1b = $fecha.' '.$hora;
 
 			$fechaCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1b, $valor1b, $valor);
-
 			/*=============================================
 			GUARDAR LA COMPRA
 			=============================================*/	

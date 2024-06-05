@@ -24,12 +24,7 @@ class AjaxClientes{
 	}
 	public function ajaxActualizarCliente(){
 
-		$item = "id";
-		$valor = $this->idCliente;
-
-		$respuesta = ControladorClientes::ctrMostrarClientes($item, $valor);
-
-		echo json_encode($respuesta);
+	
 
 
 	}
@@ -52,10 +47,10 @@ if(isset($_POST["idCliente"])){
 ACTUALIZAR CLIENTE - COMPRA GRATIS
 =============================================*/	
 
-if(isset($_POST["clienteFree"])){
+if(isset($_POST["idClienteFree"])){
 
 	$cliente = new AjaxClientes();
-	$cliente -> idCliente = $_POST["clienteFree"];
+	$cliente -> idCliente = $_POST["idClienteFree"];
 	$cliente -> ajaxActualizarCliente();
 
 }
